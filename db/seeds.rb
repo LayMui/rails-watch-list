@@ -23,7 +23,10 @@ data = JSON.parse(response)
 puts data
 
 movies = data["results"]
+poster_base_url = "https://image.tmdb.org/t/p/w500"
+
+Movie.destroy_all
 
 movies.each do |movie|
-  Movie.create(title: movie["title"], overview: movie["overview"], poster_url: movie["poster_path"], rating: movie["vote_average"])
+  Movie.create(title: movie["title"], overview: movie["overview"], poster_url: "#{poster_base_url}#{movie["poster_path"]}", rating: movie["vote_average"])
 end

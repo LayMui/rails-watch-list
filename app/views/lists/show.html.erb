@@ -4,7 +4,11 @@
       <h5 class="card-title"><%= @list.title %></h5>
       <p class="card-text"><%= @list.overview %></p>
       <p class="card-text"><%= @list.rating %></p>
-      <a href="#" class="btn btn-primary"><%= @list.poster_url %></a>
+      <% if @list.poster_url.present? %>
+        <%= image_tag @list.poster_url, class: "card-img-top" %>
+      <% else %>
+        <p>No poster available</p>
+      <% end %>
     </div>
   </div>
 </div>
